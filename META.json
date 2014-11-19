@@ -32,11 +32,24 @@
       },
       "runtime" : {
          "requires" : {
+            "AnyEvent" : "7.07",
+            "Getopt::Long" : "0",
+            "IPC::Run" : "0",
             "Modern::Perl" : "0",
+            "POSIX" : "0",
             "Test::More" : "0"
          }
       }
    },
    "release_status" : "stable",
-   "version" : "0.100"
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/zurborg/libnet-nodetransformator-perl/issues"
+      },
+      "homepage" : "https://metacpan.org/release/Net-NodeTransformator",
+      "repository" : {
+         "url" : "https://github.com/zurborg/libnet-nodetransformator-perl.git"
+      }
+   },
+   "version" : "0.101"
 }

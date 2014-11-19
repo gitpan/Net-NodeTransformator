@@ -2,7 +2,7 @@ NAME
     Net::NodeTransformator - interface to node transformator
 
 VERSION
-    Version 0.100
+    Version 0.101
 
 DESCRIPTION
     This module is an interface to the transformator package of nodejs. See
