@@ -3,29 +3,28 @@ abstract: 'interface to node transformator'
 author:
   - 'David Zurborg <zurborg@cpan.org>'
 build_requires:
-  ExtUtils::MakeMaker: 0
+  Env::Path: '0'
+  File::Temp: '0'
+  IPC::Run: '0'
+  Test::More: '0'
+  Try::Tiny: '0'
 configure_requires:
-  ExtUtils::MakeMaker: 0
-dynamic_config: 1
-generated_by: 'ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.133380'
-license: unknown
+  ExtUtils::MakeMaker: '0'
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 5.025, CPAN::Meta::Converter version 2.143240'
+license: open_source
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: Net-NodeTransformator
-no_index:
-  directory:
-    - t
-    - inc
 requires:
-  AnyEvent: 7.07
-  Getopt::Long: 0
-  IPC::Run: 0
-  Modern::Perl: 0
-  POSIX: 0
-  Test::More: 0
+  AnyEvent: '0'
+  AnyEvent::Handle: '0'
+  AnyEvent::Socket: '0'
+  POSIX: '0'
+  strict: '0'
+  warnings: '0'
 resources:
   bugtracker: https://github.com/zurborg/libnet-nodetransformator-perl/issues
-  homepage: https://metacpan.org/release/Net-NodeTransformator
   repository: https://github.com/zurborg/libnet-nodetransformator-perl.git
-version: 0.101
+version: '0.102'

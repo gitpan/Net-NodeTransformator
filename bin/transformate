@@ -1,4 +1,5 @@
-#!/usr/bin/perl -w
+# ABSTRACT: transformate
+# PODNAME: transformate
 
 use Modern::Perl;
 use Getopt::Long;
@@ -64,15 +65,27 @@ print $nnt->transform($engine, $inp, $data);
 
 __END__
 
+=pod
+
+=encoding UTF-8
+
 =head1 NAME
 
-transformate - client for transformator
+transformate - transformate
+
+=head1 VERSION
+
+version 0.102
 
 =head1 SYNOPSIS
 
 transformate [options] <input file>
 
 If no input file is given, standard input is used.
+
+=head1 NAME
+
+transformate - client for transformator
 
 =head1 OPTIONS
 
@@ -95,5 +108,17 @@ If no input file is given, standard input is used.
 =item C<--list> just return a list of available engine, sorted by output format
 
 =back
+
+=head1 AUTHOR
+
+David Zurborg <zurborg@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2014 by David Zurborg.
+
+This is free software, licensed under:
+
+  The ISC License
 
 =cut
