@@ -24,19 +24,21 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "AnyEvent" => 0,
     "AnyEvent::Handle" => 0,
+    "AnyEvent::Proc" => "0.101",
     "AnyEvent::Socket" => 0,
+    "CBOR::XS" => "1.26",
+    "Env::Path" => 0,
+    "File::Temp" => 0,
     "POSIX" => 0,
+    "Try::Tiny" => 0,
     "strict" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "Env::Path" => 0,
-    "File::Temp" => 0,
     "IPC::Run" => 0,
-    "Test::More" => 0,
-    "Try::Tiny" => 0
+    "Test::More" => 0
   },
-  "VERSION" => "0.102",
+  "VERSION" => "0.103",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -46,7 +48,9 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "AnyEvent" => 0,
   "AnyEvent::Handle" => 0,
+  "AnyEvent::Proc" => "0.101",
   "AnyEvent::Socket" => 0,
+  "CBOR::XS" => "1.26",
   "Env::Path" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Temp" => 0,

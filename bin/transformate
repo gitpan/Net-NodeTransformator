@@ -7,6 +7,8 @@ use POSIX qw(getcwd);
 use Net::NodeTransformator;
 use autodie;
 
+our $VERSION = '0.103'; # VERSION
+
 my $host = 'localhost';
 my $port = 12345;
 my $sock;
@@ -75,7 +77,7 @@ transformate - transformate
 
 =head1 VERSION
 
-version 0.102
+version 0.103
 
 =head1 SYNOPSIS
 

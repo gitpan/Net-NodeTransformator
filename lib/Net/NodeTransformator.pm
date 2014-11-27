@@ -6,9 +6,13 @@ use warnings;
 use AnyEvent;
 use AnyEvent::Handle;
 use AnyEvent::Socket;
+use AnyEvent::Proc 0.101;
+use Try::Tiny;
+use Env::Path;
+use File::Temp qw(tempdir);
 use POSIX qw(getcwd);
 
-our $VERSION = '0.102'; # VERSION
+our $VERSION = '0.103'; # VERSION
 
 
 sub new {
@@ -31,11 +35,70 @@ sub new {
 }
 
 
+sub standalone {
+	my ($class, $hostport) = @_;
+
+	my $bin = 'transformator';
+	my ($path) = Env::Path->PATH->Whence($bin);
+
+	unless ($hostport) {
+		my $tmpdir = tempdir(CLEANUP => 1);
+		$hostport = "$tmpdir/~sock";
+	}
+
+	my $errstr;
+
+	my $ok = 0;
+
+	my $server = AnyEvent::Proc->new(
+		bin => $path,
+		args => [ $hostport ],
+		rtimeout => 10,
+		errstr => \$errstr,
+		on_rtimeout => sub { shift->kill; $ok = 0 },
+	);
+
+	while (local $_ = $server->readline) {
+		AE::log debug => $_;
+		if (/server bound/) {
+			$ok = 1;
+			last;
+		}
+	}
+
+	AE::log error => $errstr if $errstr;
+
+	$server->stop_rtimeout;
+
+	unless ($ok) {
+		$server->fire_and_kill(10);
+		AE::log fatal => 'standalone service not started';
+		return undef;
+	} else {
+		my $client = $class->new($hostport);
+		$client->{_server} = $server;
+		return $client;	
+	}
+}
+
+
+sub cleanup {
+	my ($self) = @_;
+	if (exists $self->{_server}) {
+		my $server = delete $self->{_server};
+		$server->fire_and_kill(10);
+	} else {
+		AE::log note => "$self->cleanup called when no standalone server active";
+	}
+
+}
+
+
 sub transform_cv($%) {
 	my ($self, %options) = @_;
-	
+
 	my $cv = AE::cv;
-	
+
 	my $err = sub {
 		$options{on_error}->(@_);
 		$cv->send(undef);
@@ -125,7 +188,7 @@ Net::NodeTransformator - interface to node transformator
 
 =head1 VERSION
 
-version 0.102
+version 0.103
 
 =head1 SYNOPSIS
 
@@ -161,6 +224,18 @@ Set the hostname/port or unix domain socket for connecting to transformator.
 	Net::NodeTransformator->new('12345');
 	Net::NodeTransformator->new('localhost:12345');
 	Net::NodeTransformator->new('path/to/unix/domain/socket');	
+
+=head2 standalone([$hostport])
+
+Starts a I<transformator> standalone server. If C<$hostport> is omitted, a temporary directory will be created and a unix domain socket will be placed in it.
+
+Returns a ready-to-use L<Net::NodeTransformator> instance.
+
+	Net::NodeTransformator->standalone;
+
+=head2 cleanup
+
+Stopps a previously started standalone server.
 
 =head2 transform_cv(%options)
 

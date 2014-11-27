@@ -3,11 +3,8 @@ abstract: 'interface to node transformator'
 author:
   - 'David Zurborg <zurborg@cpan.org>'
 build_requires:
-  Env::Path: '0'
-  File::Temp: '0'
   IPC::Run: '0'
   Test::More: '0'
-  Try::Tiny: '0'
 configure_requires:
   ExtUtils::MakeMaker: '0'
 dynamic_config: 0
@@ -20,11 +17,17 @@ name: Net-NodeTransformator
 requires:
   AnyEvent: '0'
   AnyEvent::Handle: '0'
+  AnyEvent::Proc: '0.101'
   AnyEvent::Socket: '0'
+  CBOR::XS: '1.26'
+  Env::Path: '0'
+  File::Temp: '0'
   POSIX: '0'
+  Try::Tiny: '0'
   strict: '0'
   warnings: '0'
 resources:
   bugtracker: https://github.com/zurborg/libnet-nodetransformator-perl/issues
+  homepage: https://github.com/zurborg/libnet-nodetransformator-perl
   repository: https://github.com/zurborg/libnet-nodetransformator-perl.git
-version: '0.102'
+version: '0.103'
