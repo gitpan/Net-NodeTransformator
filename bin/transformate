@@ -7,7 +7,7 @@ use POSIX qw(getcwd);
 use Net::NodeTransformator;
 use autodie;
 
-our $VERSION = '0.103'; # VERSION
+our $VERSION = '0.104'; # VERSION
 
 my $host = 'localhost';
 my $port = 12345;
@@ -69,15 +69,13 @@ __END__
 
 =pod
 
-=encoding UTF-8
-
 =head1 NAME
 
 transformate - transformate
 
 =head1 VERSION
 
-version 0.103
+version 0.104
 
 =head1 SYNOPSIS
 
@@ -110,6 +108,15 @@ transformate - client for transformator
 =item C<--list> just return a list of available engine, sorted by output format
 
 =back
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+https://github.com/zurborg/libnet-nodetransformator-perl/issues
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
 
 =head1 AUTHOR
 

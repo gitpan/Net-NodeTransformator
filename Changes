@@ -1,8 +1,20 @@
 Revision history for Net-NodeTransformator
 
-{{$NEXT}}
+0.104 2014-12-11
+ - fix prerequirements
+ - provide asychronous form of standalone()
+
+0.103 2014-11-27
  - provide standalone mechanism
  - use AnyEvent::Proc instead of IPC::Run
+
+ [API CHANGES]
+
+ [BUG FIXES]
+
+ [DOCUMENTATION]
+
+ [ENHANCEMENTS]
 
 0.102 2014-11-22
  - use Dist::Zilla::TravisCI

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-
+use 5.010;
 
 use ExtUtils::MakeMaker;
 
@@ -20,13 +20,15 @@ my %WriteMakefileArgs = (
     "bin/transformate"
   ],
   "LICENSE" => "open_source",
+  "MIN_PERL_VERSION" => "5.010",
   "NAME" => "Net::NodeTransformator",
   "PREREQ_PM" => {
     "AnyEvent" => 0,
     "AnyEvent::Handle" => 0,
     "AnyEvent::Proc" => "0.101",
     "AnyEvent::Socket" => 0,
-    "CBOR::XS" => "1.26",
+    "CBOR::XS" => 0,
+    "Carp" => 0,
     "Env::Path" => 0,
     "File::Temp" => 0,
     "POSIX" => 0,
@@ -35,10 +37,10 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "IPC::Run" => 0,
-    "Test::More" => 0
+    "Test::More" => 0,
+    "Test::Most" => 0
   },
-  "VERSION" => "0.103",
+  "VERSION" => "0.104",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -50,13 +52,14 @@ my %FallbackPrereqs = (
   "AnyEvent::Handle" => 0,
   "AnyEvent::Proc" => "0.101",
   "AnyEvent::Socket" => 0,
-  "CBOR::XS" => "1.26",
+  "CBOR::XS" => 0,
+  "Carp" => 0,
   "Env::Path" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Temp" => 0,
-  "IPC::Run" => 0,
   "POSIX" => 0,
   "Test::More" => 0,
+  "Test::Most" => 0,
   "Try::Tiny" => 0,
   "strict" => 0,
   "warnings" => 0
